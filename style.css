@@ -61,7 +61,7 @@ a { text-decoration: none; }
 
 .new-hero {
     position: relative;
-    background: linear-gradient(to right, #1a2f28 0%, #1a2f28 40%, rgba(26, 47, 40, 0.7) 60%, rgba(26, 47, 40, 0) 100%), 
+    background: linear-gradient(to right, #172822 -10%, #131d19 20%, rgba(11, 20, 17, 0.85) 60%, rgba(11, 20, 17, 0) 100%), 
                 url('images/banner.jpeg') right center / cover no-repeat;
     color: white;
     padding: 60px 5% 100px; 
