@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SmartMart - Contact Us</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -27,57 +26,97 @@
         </div>
     </header>
 
-    <section class="section-container" style="margin-top: 40px;">
-        <div class="section-header">
-            <h2>Get in Touch</h2>
+    <section class="new-contact-section">
+        <div class="contact-header">
+            <div class="header-line"><span></span><img src="images/circle.svg" style="width: 6px; height: 6px;" alt="dot"><span></span></div>
+            <h1>Get in Touch</h1>
+            <p>We're here to help and happy to hear from you. <img src="images/heart.svg" style="width: 16px; height: 16px; vertical-align: middle; filter: brightness(0) saturate(100%) invert(77%) sepia(21%) saturate(694%) hue-rotate(358deg) brightness(93%) contrast(88%);" alt="Heart"></p>
         </div>
-        
-        <div class="contact-wrapper">
-            <div class="contact-info">
-                <h3>Contact Information</h3>
-                <p>We'd love to hear from you! Whether you have a question about products, pricing, or anything else, our team is ready to answer all your questions.</p>
+
+        <div class="new-contact-layout">
+            <div class="contact-form-card">
+                <h2>Send Us a Message</h2>
+                <p class="form-subtitle">Have a question or feedback? Fill out the form and we'll get back to you soon.</p>
                 
-                <div class="info-item">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <div>
-                        <h4>Address</h4>
-                        <p>123 Green Lane , Johor Bahru, Malaysia</p>
+                <form id="contactForm">
+                    <div class="custom-input-group">
+                        <img src="images/user-regular-full.svg" style="width: 16px; height: 16px; position: absolute; left: 20px; top: 18px; opacity: 0.5;" alt="User">
+                        <input type="text" id="name" placeholder="Your Name" required>
                     </div>
-                </div>
-                
-                <div class="info-item">
-                    <i class="fa-solid fa-phone"></i>
-                    <div>
-                        <h4>Phone</h4>
-                        <p>+60 12 345 6789</p>
+
+                    <div class="custom-input-group">
+                        <img src="images/envelope-regular-full.svg" style="width: 16px; height: 16px; position: absolute; left: 20px; top: 18px; opacity: 0.5;" alt="Email">
+                        <input type="email" id="email" placeholder="Your Email" required>
                     </div>
-                </div>
-                
-                <div class="info-item">
-                    <i class="fa-solid fa-envelope"></i>
-                    <div>
-                        <h4>Email</h4>
-                        <p>support@smartmart.com</p>
+
+                    <div class="custom-input-group">
+                        <img src="images/comment-dots-regular-full.svg" style="width: 16px; height: 16px; position: absolute; left: 20px; top: 18px; opacity: 0.5;" alt="Message">
+                        <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
                     </div>
+
+                    <button type="submit" class="send-btn">
+                        <img src="images/paper-plane-regular-full.svg" style="width: 16px; height: 16px;" alt="Send"> SEND MESSAGE
+                    </button>
+                    
+                    <p class="privacy-note">
+                        <img src="images/circle-check-solid-full.svg" style="width: 14px; height: 14px; filter: brightness(0) saturate(100%) invert(83%) sepia(13%) saturate(1055%) hue-rotate(63deg) brightness(91%) contrast(87%);" alt="Check"> We respect your privacy. We'll never share your information.
+                    </p>
+                </form>
+
+                <div class="floating-badge">
+                    <img src="images/leaf.svg" style="width: 20px; height: 20px; filter: brightness(0) invert(1); margin-bottom: 8px;" alt="leaf">
+                    <span>We'd love to<br>hear from you</span>
+                    <img src="images/heart.svg" style="width: 10px; height: 10px; filter: brightness(0) saturate(100%) invert(77%) sepia(21%) saturate(694%) hue-rotate(358deg) brightness(93%) contrast(88%);" alt="Heart">
                 </div>
             </div>
 
-            <div class="contact-form-container">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" placeholder="Your Name" required>
+            <div class="contact-info-side">
+                <h2>Contact Information</h2>
+                <div class="info-line"><span></span><img src="images/circle.svg" style="width: 6px; height: 6px;" alt="dot"></div>
+                
+                <div class="info-card-list">
+                    <div class="info-card">
+                        <div class="info-icon"><img src="images/phone.svg" style="width: 20px; height: 20px; filter: brightness(0) saturate(100%) invert(35%) sepia(20%) saturate(1200%) hue-rotate(100deg) brightness(95%) contrast(85%);" alt="Phone"></div>
+                        <div class="info-text">
+                            <h4>Phone</h4>
+                            <p>+60 12 345 6789</p>
+                        </div>
+                        <img src="images/chevron-right-solid-full.svg" style="width: 12px; height: 12px; opacity: 0.3;" alt="arrow">
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" placeholder="Your Email" required>
+
+                    <div class="info-card">
+                        <div class="info-icon"><img src="images/email.svg" style="width: 20px; height: 20px; filter: brightness(0) saturate(100%) invert(35%) sepia(20%) saturate(1200%) hue-rotate(100deg) brightness(95%) contrast(85%);" alt="Email"></div>
+                        <div class="info-text">
+                            <h4>Email</h4>
+                            <p>support@smartmart.com</p>
+                        </div>
+                        <img src="images/chevron-right-solid-full.svg" style="width: 12px; height: 12px; opacity: 0.3;" alt="arrow">
                     </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" rows="5" placeholder="How can we help you?" required></textarea>
+
+                    <div class="info-card">
+                        <div class="info-icon"><img src="images/location.svg" style="width: 20px; height: 20px; filter: brightness(0) saturate(100%) invert(35%) sepia(20%) saturate(1200%) hue-rotate(100deg) brightness(95%) contrast(85%);" alt="Location"></div>
+                        <div class="info-text">
+                            <h4>Address</h4>
+                            <p>123 Green Lane<br>Johor Bahru, Malaysia</p>
+                        </div>
+                        <img src="images/chevron-right-solid-full.svg" style="width: 12px; height: 12px; opacity: 0.3;" alt="arrow">
                     </div>
-                    <button type="submit" class="shop-btn" style="width: 100%; justify-content: center; border-radius: 8px;">Send Message</button>
-                </form>
+
+                    <div class="info-card">
+                        <div class="info-icon"><img src="images/time.svg" style="width: 20px; height: 20px; filter: brightness(0) saturate(100%) invert(35%) sepia(20%) saturate(1200%) hue-rotate(100deg) brightness(95%) contrast(85%);" alt="Time"></div>
+                        <div class="info-text">
+                            <h4>Opening Hours</h4>
+                            <p>Mon - Fri: 8:00 AM - 8:00 PM<br>Sat - Sun: 9:00 AM - 6:00 PM</p>
+                        </div>
+                        <img src="images/chevron-right-solid-full.svg" style="width: 12px; height: 12px; opacity: 0.3;" alt="arrow">
+                    </div>
+                </div>
+
+                <div class="map-placeholder">
+                    <div class="map-bg-pattern"></div>
+                    <div class="map-pin"><img src="images/leaf.svg" style="width: 20px; height: 20px; filter: brightness(0) invert(1);" alt="leaf"></div>
+                    <div class="map-label"><img src="images/circle.svg" style="width: 6px; height: 6px; filter: brightness(0) saturate(100%) invert(77%) sepia(21%) saturate(694%) hue-rotate(358deg) brightness(93%) contrast(88%);" alt="dot"> SmartMart Store</div>
+                </div>
             </div>
         </div>
     </section>
@@ -101,8 +140,8 @@
             
             <div class="footer-contact">
                 <h3>Contact Us</h3>
-                <p><i class="fa-solid fa-phone"></i> +60 12 345 6789</p>
-                <p><i class="fa-solid fa-envelope"></i> support@smartmart.com</p>
+                <p><img src="images/phone.svg" style="width: 14px; height: 14px; margin-right: 10px; vertical-align: middle; filter: brightness(0) saturate(100%) invert(83%) sepia(13%) saturate(1055%) hue-rotate(63deg) brightness(91%) contrast(87%);" alt="Phone"> +60 12 345 6789</p>
+                <p><img src="images/email.svg" style="width: 14px; height: 14px; margin-right: 10px; vertical-align: middle; filter: brightness(0) saturate(100%) invert(83%) sepia(13%) saturate(1055%) hue-rotate(63deg) brightness(91%) contrast(87%);" alt="Email"> support@smartmart.com</p>
             </div>
         </div>
     </footer>

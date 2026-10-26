@@ -73,22 +73,78 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCartPage();
     }
 
+    const productCards = document.querySelectorAll('.product-card');
     const searchInput = document.getElementById('searchInput');
-    if (searchInput) {
-        searchInput.addEventListener('input', function() {
-            const filter = this.value.toLowerCase();
-            document.querySelectorAll('.product-card').forEach(card => {
+    const categoryItems = document.querySelectorAll('.filter-list li');
+    const priceRange = document.getElementById('priceRange');
+    const priceDisplay = document.getElementById('priceDisplay');
+
+    if (searchInput && priceRange) {
+        let currentCategory = 'all';
+        let currentMaxPrice = 50;
+        let currentSearch = '';
+
+        function filterProducts() {
+            productCards.forEach(card => {
                 const title = card.querySelector('h3').innerText.toLowerCase();
-                card.style.display = title.includes(filter) ? "flex" : "none"; 
+                const price = card.dataset.price ? parseFloat(card.dataset.price) : parseFloat(card.querySelector('.price').innerText.replace(/[^0-9.]/g, ''));
+                const category = card.dataset.category || 'all';
+
+                const matchSearch = title.includes(currentSearch);
+                const matchCategory = (currentCategory === 'all' || category === currentCategory);
+                const matchPrice = price <= currentMaxPrice;
+
+                if (matchSearch && matchCategory && matchPrice) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        searchInput.addEventListener('input', (e) => {
+            currentSearch = e.target.value.toLowerCase();
+            filterProducts();
+        });
+
+        categoryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                categoryItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                
+                currentCategory = item.dataset.category;
+                filterProducts();
             });
         });
-    }
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const queryParam = urlParams.get('q');
-    if (queryParam && searchInput) {
-        searchInput.value = queryParam; 
-        searchInput.dispatchEvent(new Event('input')); 
+        priceRange.addEventListener('input', (e) => {
+            currentMaxPrice = parseFloat(e.target.value);
+            priceDisplay.innerText = `RM ${currentMaxPrice.toFixed(2)}`;
+            filterProducts();
+        });
+
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        const queryParam = urlParams.get('q');
+        if (queryParam) {
+            searchInput.value = queryParam;
+            currentSearch = queryParam.toLowerCase();
+        }
+
+        const categoryParam = urlParams.get('category');
+        if (categoryParam) {
+            currentCategory = categoryParam;
+            categoryItems.forEach(item => {
+                if (item.dataset.category === categoryParam) {
+                    categoryItems.forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        if (queryParam || categoryParam) {
+            filterProducts();
+        }
     }
 
     const contactForm = document.getElementById('contactForm');
@@ -129,14 +185,96 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        navInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
+        navInput.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter' || e.keyCode === 13) {
+                e.preventDefault();
                 const query = e.target.value.trim();
+                
                 if (query) {
-                    window.location.href = `products.html?q=${encodeURIComponent(query)}`;
+                    if (window.location.pathname.includes('products.html')) {
+                        const mainSearchInput = document.getElementById('searchInput');
+                        if (mainSearchInput) {
+                            mainSearchInput.value = query;
+                            mainSearchInput.dispatchEvent(new Event('input'));
+                            
+                            navInput.style.width = '0px';
+                            navInput.style.opacity = '0';
+                            navInput.style.visibility = 'hidden';
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }
+                    } else {
+                        window.location.href = `products.html?q=${encodeURIComponent(query)}`;
+                    }
                 }
             }
         });
+    }
+
+    const navbar = document.querySelector('.navbar');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (navbar && navLinks) {
+        const hamburger = document.createElement('div');
+        hamburger.className = 'hamburger';
+        hamburger.innerHTML = '<img src="images/bars-solid-full.svg" style="width: 24px; height: 24px;" alt="Menu">';
+        navbar.insertBefore(hamburger, navbar.firstChild);
+
+        const mobileMenu = document.createElement('div');
+        mobileMenu.className = 'mobile-menu';
+        mobileMenu.innerHTML = `<span class="close-btn">&times;</span>${navLinks.innerHTML}`;
+
+        const overlay = document.createElement('div');
+        overlay.className = 'overlay';
+
+        document.body.appendChild(mobileMenu);
+        document.body.appendChild(overlay);
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        const closeMenu = () => {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+        };
+
+        mobileMenu.querySelector('.close-btn').addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+    }
+
+    const slides = document.querySelectorAll('.slider-container .slide');
+    const dots = document.querySelectorAll('.slider-dots .dot');
+    
+    if (slides.length > 0) {
+        let currentIndex = 0;
+        let slideInterval;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            if(dots.length > 0) dots[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            showSlide(currentIndex);
+        }
+
+        function startSlideShow() {
+            slideInterval = setInterval(nextSlide, 3000);
+        }
+
+        window.currentSlide = function(index) {
+            clearInterval(slideInterval); 
+            currentIndex = index;
+            showSlide(currentIndex);
+            startSlideShow(); 
+        }
+
+        startSlideShow();
     }
 });
 
@@ -180,7 +318,7 @@ function renderCartPage() {
                         <button onclick="changeQuantity(${index}, 1)">+</button>
                     </div>
                     <button class="remove-btn" onclick="removeItem(${index})">
-                        <i class="fa-solid fa-trash"></i>
+                        <img src="images/trash-solid-full.svg" style="width: 20px; height: 20px;" alt="Delete">
                     </button>
                 </div>
             </div>
@@ -215,7 +353,9 @@ function checkout() {
         modal.id = 'success-modal';
         modal.innerHTML = `
             <div class="success-content">
-                <div class="success-icon"><i class="fa-solid fa-check"></i></div>
+                <div class="success-icon" style="background: none; width: auto; height: auto; animation: none;">
+                    <img src="images/circle-check-solid-full.svg" style="width: 80px; height: 80px; filter: brightness(0) saturate(100%) invert(35%) sepia(20%) saturate(1200%) hue-rotate(100deg) brightness(95%) contrast(85%);" alt="Success">
+                </div>
                 <h2>Payment Successful!</h2>
                 <p>Thank you for shopping with SmartMart.<br>Your order has been placed successfully.</p>
                 <button class="shop-btn" style="width: 100%; justify-content: center; border-radius: 8px;" onclick="finishCheckout()">
@@ -235,52 +375,3 @@ function finishCheckout() {
     if (modal) modal.classList.remove('show');
     setTimeout(() => window.location.href = 'index.html', 500);
 }
-
-// ==========================================
-// 7. 移动端汉堡菜单侧边栏功能
-// ==========================================
-document.addEventListener('DOMContentLoaded', () => {
-    const navbar = document.querySelector('.navbar');
-    const navLinks = document.querySelector('.nav-links');
-
-    // 如果页面上有导航栏和链接
-    if (navbar && navLinks) {
-        // 1. 动态创建汉堡按钮
-        const hamburger = document.createElement('div');
-        hamburger.className = 'hamburger';
-        hamburger.innerHTML = '<i class="fa-solid fa-bars"></i>'; // 三条线图标
-        navbar.insertBefore(hamburger, navbar.firstChild); // 插到导航栏最前面
-
-        // 2. 动态创建侧边栏和遮罩层
-        const mobileMenu = document.createElement('div');
-        mobileMenu.className = 'mobile-menu';
-        
-        // 把原来的链接复制到侧边栏，并加上关闭按钮
-        mobileMenu.innerHTML = `
-            <span class="close-btn">&times;</span>
-            ${navLinks.innerHTML}
-        `;
-
-        const overlay = document.createElement('div');
-        overlay.className = 'overlay';
-
-        // 插入到 body 末尾
-        document.body.appendChild(mobileMenu);
-        document.body.appendChild(overlay);
-
-        // 3. 绑定点击事件
-        hamburger.addEventListener('click', () => {
-            mobileMenu.classList.add('active');
-            overlay.classList.add('active');
-        });
-
-        const closeMenu = () => {
-            mobileMenu.classList.remove('active');
-            overlay.classList.remove('active');
-        };
-
-        // 点击 X 或 点击黑色遮罩 关闭菜单
-        mobileMenu.querySelector('.close-btn').addEventListener('click', closeMenu);
-        overlay.addEventListener('click', closeMenu);
-    }
-});

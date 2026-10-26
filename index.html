@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SmartMart - Home</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="index-page">
 
     <header class="navbar">
         <a href="index.html" class="logo"><img src="images/leaf.svg" alt="Leaf Logo" style="width: 28px; height: 28px; vertical-align: middle; margin-right: 5px;"> SmartMart</a>
@@ -27,16 +26,53 @@
         </div>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <p class="subtitle">FRESH GROCERIES, BETTER LIVING</p>
-            <h1>Quality Products<br>for Your Family</h1>
-            <p class="description">Shop fresh groceries, daily essentials and more at the best prices. Delivered to your door.</p>
-            <a href="products.html" class="shop-btn" style="display:inline-flex;">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
+    <section class="new-hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <p class="subtitle">
+                    <img src="images/leaf.svg" style="width: 14px; height: 14px; vertical-align: middle;" alt="leaf"> FRESH GROCERIES, BETTER LIVING <span class="line"></span>
+                </p>
+                <h1>Quality<br>Products for<br>Your Family</h1>
+                <p class="description">Handpicked fresh produce, trusted essentials, and smart choices for a healthier tomorrow.</p>
+                
+                <a href="products.html" class="shop-btn">Shop Now <img src="images/arrow-right-long-solid-full.svg" style="width: 16px; height: 16px; vertical-align: middle; margin-left: 5px;" alt="arrow"></a>
+            </div>
+            
+            <div class="hero-badge">
+                <img src="images/leaf.svg" style="width: 18px; height: 18px; vertical-align: middle;" alt="leaf"> Fresh & Healthy
+            </div>
         </div>
-        <div class="hero-image">
-            <img src="images/banner.jpeg" alt="Fresh Groceries">
-            <div class="fresh-badge">Fresh & Healthy</div>
+
+        <div class="wave-bottom">
+            <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                <path d="M0,100 C320,50 400,0 720,0 C1040,0 1120,50 1440,100 Z" fill="#f0f7f0"></path>
+            </svg>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="feature-title">
+            <img src="images/leaf.svg" style="width: 14px; height: 14px; vertical-align: middle;" alt="leaf"> THOUGHTFULLY SOURCED. CAREFULLY CURATED. LOVED BY FAMILIES.
+        </div>
+        
+        <div class="feature-grid">
+            <div class="feature-box">
+                <div class="icon-circle"><img src="images/leaf.svg" style="width: 30px; height: 30px;" alt="leaf"></div>
+                <h3>Fresh & Seasonal</h3>
+                <p>Sourced daily from local farms and trusted growers.</p>
+            </div>
+            
+            <div class="feature-box">
+                <div class="icon-circle"><img src="images/heart.svg" style="width: 26px; height: 26px; filter: brightness(0) saturate(100%) invert(35%) sepia(20%) saturate(1200%) hue-rotate(100deg) brightness(95%) contrast(85%);" alt="Heart"></div>
+                <h3>Healthy Choices</h3>
+                <p>Nutritious products that support your well-being.</p>
+            </div>
+            
+            <div class="feature-box">
+                <div class="icon-circle"><img src="images/house-solid-full.svg" style="width: 28px; height: 28px; filter: brightness(0) saturate(100%) invert(35%) sepia(20%) saturate(1200%) hue-rotate(100deg) brightness(95%) contrast(85%);" alt="House"></div>
+                <h3>Smart Delivery</h3>
+                <p>Reliable delivery, right to your door.</p>
+            </div>
         </div>
     </section>
 
@@ -57,8 +93,8 @@
             </div>
             <div class="footer-contact">
                 <h3>Contact Us</h3>
-                <p><i class="fa-solid fa-phone"></i> +60 12 345 6789</p>
-                <p><i class="fa-solid fa-envelope"></i> support@smartmart.com</p>
+                <p><img src="images/phone.svg" style="width: 14px; height: 14px; margin-right: 10px; vertical-align: middle; filter: brightness(0) saturate(100%) invert(83%) sepia(13%) saturate(1055%) hue-rotate(63deg) brightness(91%) contrast(87%);" alt="Phone"> +60 12 345 6789</p>
+                <p><img src="images/email.svg" style="width: 14px; height: 14px; margin-right: 10px; vertical-align: middle; filter: brightness(0) saturate(100%) invert(83%) sepia(13%) saturate(1055%) hue-rotate(63deg) brightness(91%) contrast(87%);" alt="Email"> support@smartmart.com</p>
             </div>
         </div>
     </footer>

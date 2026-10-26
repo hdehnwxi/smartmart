@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartMart - All Products</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>SmartMart - Fresh Produce</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="products-page">
+
     <header class="navbar">
         <a href="index.html" class="logo"><img src="images/leaf.svg" alt="Leaf Logo" style="width: 28px; height: 28px; vertical-align: middle; margin-right: 5px;"> SmartMart</a>
         <nav class="nav-links">
@@ -26,61 +26,192 @@
         </div>
     </header>
 
-    <div class="search-container" style="margin-top: 30px;">
-        <div class="search-box">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" id="searchInput" placeholder="Search all products...">
-        </div>
-    </div>
-
-    <section class="section-container" style="margin-top: 10px;">
-        <div class="section-header"><h2>All Products</h2></div>
-        <div class="product-grid">
-            <div class="product-card"><img src="images/c1.jpeg"><h3>Fresh Apples</h3><p class="price">RM 8.90</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
-            <div class="product-card"><img src="images/c2.jpeg"><h3>Organic Bananas</h3><p class="price">RM 5.00</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
-            <div class="product-card"><img src="images/c3.jpeg"><h3>Fresh Tomatoes</h3><p class="price">RM 3.50</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
-            <div class="product-card"><img src="images/c4.jpeg"><h3>Oranges</h3><p class="price">RM 6.50</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
-            <div class="product-card"><img src="images/c5.jpeg"><h3>Strawberries</h3><p class="price">RM 12.00</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
+    <div class="store-layout">
+        <aside class="filter-sidebar">
+            <h2 class="filter-title"><img src="images/leaf.svg" style="width: 24px; height: 24px; margin-right: 8px; vertical-align: middle;" alt="leaf"> Filters</h2>
             
-            <div class="product-card"><img src="images/c6.jpeg"><h3>Fresh Milk (1L)</h3><p class="price">RM 6.50</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
-            <div class="product-card"><img src="images/c7.jpeg"><h3>Fresh Eggs (10s)</h3><p class="price">RM 9.50</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
-            <div class="product-card"><img src="images/c8.jpeg"><h3>Cheddar Cheese</h3><p class="price">RM 15.00</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
-            <div class="product-card"><img src="images/c9.jpeg"><h3>Greek Yogurt</h3><p class="price">RM 5.50</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
-            <div class="product-card"><img src="images/c10.jpeg"><h3>Butter (250g)</h3><p class="price">RM 11.50</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
+            <div class="sidebar-search">
+                <img src="images/search.svg" style="width: 16px; height: 16px; margin-right: 10px; vertical-align: middle; opacity: 0.6;" alt="Search">
+                <input type="text" id="searchInput" placeholder="Search produce...">
+            </div>
 
-            <div class="product-card"><img src="images/c11.jpeg"><h3>Wholemeal Bread</h3><p class="price">RM 4.20</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
-            <div class="product-card"><img src="images/c12.jpeg"><h3>Butter Croissant</h3><p class="price">RM 3.50</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
-            <div class="product-card"><img src="images/c13.jpeg"><h3>Chocolate Cake</h3><p class="price">RM 25.00</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
-            <div class="product-card"><img src="images/c14.jpeg"><h3>Baguette</h3><p class="price">RM 5.50</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
-            <div class="product-card"><img src="images/c15.jpeg"><h3>Blueberry Muffin</h3><p class="price">RM 4.50</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
+            <ul class="filter-list" id="categoryFilter">
+                <li class="active" data-category="all"><img src="images/basket-shopping-solid-full.svg" style="width: 16px; height: 16px; margin-right: 10px; vertical-align: middle; opacity: 0.6;" alt="Basket"> All Produce</li>
+                <li data-category="fruits"><img src="images/apple-whole-solid-full.svg" style="width: 16px; height: 16px; margin-right: 10px; vertical-align: middle; opacity: 0.6;" alt="Fruits"> Fruits</li>
+                <li data-category="vegetables"><img src="images/carrot-solid-full.svg" style="width: 16px; height: 16px; margin-right: 10px; vertical-align: middle; opacity: 0.6;" alt="Vegetables"> Vegetables</li>
+                <li data-category="dairy"><img src="images/bottle-water-solid-full.svg" style="width: 16px; height: 16px; margin-right: 10px; vertical-align: middle; opacity: 0.6;" alt="Dairy"> Dairy & Eggs</li>
+                <li data-category="bakery"><img src="images/bread-slice-solid-full.svg" style="width: 16px; height: 16px; margin-right: 10px; vertical-align: middle; opacity: 0.6;" alt="Bakery"> Bakery</li>
+                <li data-category="snacks"><img src="images/cookie-solid-full.svg" style="width: 16px; height: 16px; margin-right: 10px; vertical-align: middle; opacity: 0.6;" alt="Snacks"> Snacks</li>
+                <li data-category="beverages"><img src="images/glass-water-solid-full.svg" style="width: 16px; height: 16px; margin-right: 10px; vertical-align: middle; opacity: 0.6;" alt="Beverages"> Beverages</li>
+                <li data-category="household"><img src="images/pump-soap-solid-full.svg" style="width: 16px; height: 16px; margin-right: 10px; vertical-align: middle; opacity: 0.6;" alt="Household"> Household</li>
+            </ul>
 
-            <div class="product-card"><img src="images/c16.jpeg"><h3>Potato Chips</h3><p class="price">RM 4.80</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
-            <div class="product-card"><img src="images/c17.jpeg"><h3>Mixed Nuts</h3><p class="price">RM 12.50</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
-            <div class="product-card"><img src="images/c18.jpeg"><h3>Popcorn</h3><p class="price">RM 5.50</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
-            <div class="product-card"><img src="images/c19.jpeg"><h3>Dark Chocolate</h3><p class="price">RM 9.90</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
-            <div class="product-card"><img src="images/c20.jpeg"><h3>Gummy Bears</h3><p class="price">RM 3.90</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
+            <div class="filter-price">
+                <span>Max Price: <strong id="priceDisplay">RM 50.00</strong></span>
+                <input type="range" id="priceRange" min="0" max="50" step="1" value="50" class="price-slider">
+                <div class="price-labels">
+                    <span>RM 0</span><span>RM 50</span>
+                </div>
+            </div>
 
-            <div class="product-card"><img src="images/c21.jpeg"><h3>Orange Juice</h3><p class="price">RM 7.90</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
-            <div class="product-card"><img src="images/c22.jpeg"><h3>Mineral Water</h3><p class="price">RM 2.00</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
-            <div class="product-card"><img src="images/c23.jpeg"><h3>Green Tea</h3><p class="price">RM 4.50</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
-            <div class="product-card"><img src="images/c24.jpeg"><h3>Instant Coffee</h3><p class="price">RM 16.50</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
-            <div class="product-card"><img src="images/c25.jpeg"><h3>Cola</h3><p class="price">RM 3.20</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
+            <div class="filter-promo">
+                <img src="images/wheat-awn-solid-full.svg" style="width: 24px; height: 24px; margin-bottom: 10px; filter: brightness(0) saturate(100%) invert(73%) sepia(14%) saturate(1133%) hue-rotate(357deg) brightness(91%) contrast(86%);" alt="Wheat">
+                <p>Supporting local farms.<br>Delivered fresh to you.</p>
+            </div>
+        </aside>
 
-            <div class="product-card"><img src="images/c26.jpeg"><h3>Toilet Tissue</h3><p class="price">RM 14.50</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
-            <div class="product-card"><img src="images/c27.jpeg"><h3>Dish Soap</h3><p class="price">RM 8.90</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
-            <div class="product-card"><img src="images/c28.jpeg"><h3>Laundry Detergent</h3><p class="price">RM 19.90</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
-            <div class="product-card"><img src="images/c29.jpeg"><h3>Hand Soap</h3><p class="price">RM 5.50</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
-            <div class="product-card"><img src="images/c30.jpeg"><h3>Shampoo</h3><p class="price">RM 15.90</p><button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button></div>
-        </div>
-    </section>
+        <main class="product-main">
+            <div class="product-header">
+                <div>
+                    <h1>Fresh Produce</h1>
+                    <p>Handpicked daily from trusted local farms <img src="images/leaf.svg" style="width: 16px; height: 16px; vertical-align: middle;" alt="leaf"></p>
+                </div>
+                <div class="seasonal-badge">
+                    <div class="badge-icon"><img src="images/leaf.svg" style="width: 20px; height: 20px; filter: brightness(0) invert(1);" alt="leaf"></div>
+                    <div>
+                        <h4>Seasonal Picks</h4>
+                        <p>Limited time. Peak flavor.<br>Picked at perfection.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-grid">
+                <div class="product-card" data-category="fruits" data-price="8.90">
+                    <img src="images/c1.jpeg"><h3>Fresh Apples</h3><p class="unit">(3 Pack)</p>
+                    <div class="card-bottom"><p class="price">RM 8.90</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+                <div class="product-card" data-category="fruits" data-price="5.00">
+                    <img src="images/c2.jpeg"><h3>Organic Bananas</h3><p class="unit">(1 Bunch)</p>
+                    <div class="card-bottom"><p class="price">RM 5.00</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+                <div class="product-card" data-category="vegetables" data-price="3.50">
+                    <img src="images/c3.jpeg"><h3>Fresh Tomatoes</h3><p class="unit">(500g)</p>
+                    <div class="card-bottom"><p class="price">RM 3.50</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+                <div class="product-card" data-category="fruits" data-price="6.50">
+                    <img src="images/c4.jpeg"><h3>Oranges</h3><p class="unit">(4 Pack)</p>
+                    <div class="card-bottom"><p class="price">RM 6.50</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+                <div class="product-card" data-category="fruits" data-price="12.00">
+                    <img src="images/c5.jpeg"><h3>Strawberries</h3><p class="unit">(250g)</p>
+                    <div class="card-bottom"><p class="price">RM 12.00</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+                <div class="product-card" data-category="dairy" data-price="6.50">
+                    <img src="images/c6.jpeg"><h3>Fresh Milk</h3><p class="unit">(1L)</p>
+                    <div class="card-bottom"><p class="price">RM 6.50</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+                <div class="product-card" data-category="dairy" data-price="9.50">
+                    <img src="images/c7.jpeg"><h3>Fresh Eggs</h3><p class="unit">(10s)</p>
+                    <div class="card-bottom"><p class="price">RM 9.50</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+                <div class="product-card" data-category="dairy" data-price="15.00">
+                    <img src="images/c8.jpeg"><h3>Cheddar Cheese</h3><p class="unit">(250g)</p>
+                    <div class="card-bottom"><p class="price">RM 15.00</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+                <div class="product-card" data-category="dairy" data-price="5.50">
+                    <img src="images/c9.jpeg"><h3>Greek Yogurt</h3><p class="unit">(500g)</p>
+                    <div class="card-bottom"><p class="price">RM 5.50</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+                <div class="product-card" data-category="dairy" data-price="11.50">
+                    <img src="images/c10.jpeg"><h3>Butter</h3><p class="unit">(250g)</p>
+                    <div class="card-bottom"><p class="price">RM 11.50</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+                <div class="product-card" data-category="bakery" data-price="4.20">
+                    <img src="images/c11.jpeg"><h3>Wholemeal Bread</h3><p class="unit">(Loaf)</p>
+                    <div class="card-bottom"><p class="price">RM 4.20</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+                <div class="product-card" data-category="bakery" data-price="3.50">
+                    <img src="images/c12.jpeg"><h3>Butter Croissant</h3><p class="unit">(2pcs)</p>
+                    <div class="card-bottom"><p class="price">RM 3.50</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+                <div class="product-card" data-category="bakery" data-price="25.00">
+                    <img src="images/c13.jpeg"><h3>Chocolate Cake</h3><p class="unit">(Whole)</p>
+                    <div class="card-bottom"><p class="price">RM 25.00</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+                <div class="product-card" data-category="bakery" data-price="5.50">
+                    <img src="images/c14.jpeg"><h3>Baguette</h3><p class="unit">(1pc)</p>
+                    <div class="card-bottom"><p class="price">RM 5.50</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+                <div class="product-card" data-category="bakery" data-price="4.50">
+                    <img src="images/c15.jpeg"><h3>Blueberry Muffin</h3><p class="unit">(Pack of 4)</p>
+                    <div class="card-bottom"><p class="price">RM 4.50</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+                <div class="product-card" data-category="snacks" data-price="4.80">
+                    <img src="images/c16.jpeg"><h3>Potato Chips</h3><p class="unit">(Large)</p>
+                    <div class="card-bottom"><p class="price">RM 4.80</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+                <div class="product-card" data-category="snacks" data-price="12.50">
+                    <img src="images/c17.jpeg"><h3>Mixed Nuts</h3><p class="unit">(500g)</p>
+                    <div class="card-bottom"><p class="price">RM 12.50</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+                <div class="product-card" data-category="snacks" data-price="5.50">
+                    <img src="images/c18.jpeg"><h3>Popcorn</h3><p class="unit">(200g)</p>
+                    <div class="card-bottom"><p class="price">RM 5.50</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+                <div class="product-card" data-category="snacks" data-price="9.90">
+                    <img src="images/c19.jpeg"><h3>Dark Chocolate</h3><p class="unit">(100g)</p>
+                    <div class="card-bottom"><p class="price">RM 9.90</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+                <div class="product-card" data-category="snacks" data-price="3.90">
+                    <img src="images/c20.jpeg"><h3>Gummy Bears</h3><p class="unit">(200g)</p>
+                    <div class="card-bottom"><p class="price">RM 3.90</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+                <div class="product-card" data-category="beverages" data-price="7.90">
+                    <img src="images/c21.jpeg"><h3>Orange Juice</h3><p class="unit">(1L)</p>
+                    <div class="card-bottom"><p class="price">RM 7.90</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+                <div class="product-card" data-category="beverages" data-price="2.00">
+                    <img src="images/c22.jpeg"><h3>Mineral Water</h3><p class="unit">(1.5L)</p>
+                    <div class="card-bottom"><p class="price">RM 2.00</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+                <div class="product-card" data-category="beverages" data-price="4.50">
+                    <img src="images/c23.jpeg"><h3>Green Tea</h3><p class="unit">(500ml)</p>
+                    <div class="card-bottom"><p class="price">RM 4.50</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+                <div class="product-card" data-category="beverages" data-price="16.50">
+                    <img src="images/c24.jpeg"><h3>Instant Coffee</h3><p class="unit">(Jar)</p>
+                    <div class="card-bottom"><p class="price">RM 16.50</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+                <div class="product-card" data-category="beverages" data-price="3.20">
+                    <img src="images/c25.jpeg"><h3>Cola</h3><p class="unit">(Can)</p>
+                    <div class="card-bottom"><p class="price">RM 3.20</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+                <div class="product-card" data-category="household" data-price="14.50">
+                    <img src="images/c26.jpeg"><h3>Toilet Tissue</h3><p class="unit">(10 Rolls)</p>
+                    <div class="card-bottom"><p class="price">RM 14.50</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+                <div class="product-card" data-category="household" data-price="8.90">
+                    <img src="images/c27.jpeg"><h3>Dish Soap</h3><p class="unit">(Refill)</p>
+                    <div class="card-bottom"><p class="price">RM 8.90</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+                <div class="product-card" data-category="household" data-price="19.90">
+                    <img src="images/c28.jpeg"><h3>Laundry Detergent</h3><p class="unit">(2L)</p>
+                    <div class="card-bottom"><p class="price">RM 19.90</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+                <div class="product-card" data-category="household" data-price="5.50">
+                    <img src="images/c29.jpeg"><h3>Hand Soap</h3><p class="unit">(Pump)</p>
+                    <div class="card-bottom"><p class="price">RM 5.50</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+                <div class="product-card" data-category="household" data-price="15.90">
+                    <img src="images/c30.jpeg"><h3>Shampoo</h3><p class="unit">(400ml)</p>
+                    <div class="card-bottom"><p class="price">RM 15.90</p><button class="add-to-cart"><img src="images/leaf.svg" style="width: 14px; height: 14px; filter: brightness(0) invert(1); margin-right: 4px;" alt="leaf"> Add</button></div>
+                </div>
+            </div>
+        </main>
+    </div>
 
     <footer>
         <div class="footer-container">
             <div class="footer-links"><h3>SmartMart</h3><p style="color:#aaa; font-size:14px; margin-top:10px;">Good Food • Better Life</p></div>
             <div class="footer-links"><h3>Quick Links</h3><div class="quick-links-grid"><a href="index.html">Home</a><a href="products.html">Products</a><a href="categories.html">Categories</a><a href="contact.html">Contact</a></div></div>
-            <div class="footer-contact"><h3>Contact Us</h3><p><i class="fa-solid fa-phone"></i> +60 12 345 6789</p><p><i class="fa-solid fa-envelope"></i> support@smartmart.com</p></div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><img src="images/phone.svg" style="width: 14px; height: 14px; margin-right: 10px; vertical-align: middle; filter: brightness(0) saturate(100%) invert(83%) sepia(13%) saturate(1055%) hue-rotate(63deg) brightness(91%) contrast(87%);" alt="Phone"> +60 12 345 6789</p>
+                <p><img src="images/email.svg" style="width: 14px; height: 14px; margin-right: 10px; vertical-align: middle; filter: brightness(0) saturate(100%) invert(83%) sepia(13%) saturate(1055%) hue-rotate(63deg) brightness(91%) contrast(87%);" alt="Email"> support@smartmart.com</p>
+            </div>
         </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
